@@ -1,10 +1,11 @@
-import Header from "./components/Header";
+import { router } from "./services/routing";
+import { RouterProvider } from "react-router-dom";
 
 function App() {
   return (
-    <div >
+    <div>
       <div className="max-w-[1024px] p-[25px] w-full mx-auto">
-        <Header />
+        <RouterProvider router={router} />
       </div>
     </div>
   );
