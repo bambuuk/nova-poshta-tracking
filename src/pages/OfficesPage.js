@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 
 const OfficesPage = () => {
   return (
