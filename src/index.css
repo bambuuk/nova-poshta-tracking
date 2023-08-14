@@ -7,4 +7,17 @@
   body {
     @apply bg-[#202124] font-[Montserrat]
   }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+
+  input:focus~label {
+    @apply top-[-20px] text-green-500
+  }
 }

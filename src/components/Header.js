@@ -10,8 +10,8 @@ const Header = () => {
             isPending
               ? "w-full block bg-[#A4271F] rounded-md py-[15px] text-center"
               : isActive
-              ? "bg-[#DB291D] w-full block rounded-md py-[15px] text-center"
-              : "w-full block bg-[#A4271F] rounded-md py-[15px] text-center"
+              ? "bg-[#DB291D] w-full block rounded-md py-[15px] text-center active:scale-[0.9] transition-all"
+              : "w-full block bg-[#A4271F] rounded-md py-[15px] text-center active:scale-[0.9] hover:bg-[#DB291D] transition-all"
           }
         >
           Перевірити ТТН
@@ -24,8 +24,8 @@ const Header = () => {
             isPending
               ? "w-full block bg-[#A4271F] rounded-md py-[15px] text-center"
               : isActive
-              ? "bg-[#DB291D] w-full block rounded-md py-[15px] text-center"
-              : "w-full block bg-[#A4271F] rounded-md py-[15px] text-center"
+              ? "bg-[#DB291D] w-full block rounded-md py-[15px] text-center active:scale-[0.9] transition-all"
+              : "w-full block bg-[#A4271F] rounded-md py-[15px] text-center active:scale-[0.9] hover:bg-[#DB291D] transition-all"
           }
         >
           Список відділень
