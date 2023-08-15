@@ -1,10 +1,12 @@
-import OrderSearchPanel from '../components/OrderSearchPanel';
+import OrdersSearchPanel from '../components/OrdersSearchPanel';
+import OrdersInfo from '../components/OrdersInfo';
 
 const TTNPage = () => {
   return (
-    <div>
-      <OrderSearchPanel />
-    </div>
+    <>
+      <OrdersSearchPanel />
+      <OrdersInfo />
+    </>
   )
 }
 
