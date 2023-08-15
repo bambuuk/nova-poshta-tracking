@@ -15,7 +15,7 @@ const OrdersSearchPanel = () => {
                 className="w-full bg-transparent border-b-2 border-solid border-white outline-none text-white focus:border-[#11e962] pb-[5px] pl-[0px] pt-[25px] transition-all placeholder:transition-transform focus:placeholder:transition-transform focus:placeholder:translate-y-[-25px] duration-300 focus:placeholder:text-[#11e962] "
               />
             </div>
-            <button className="bg-[#190E6F] hover:bg-[#454dc0] min-w-[150px] py-2 text-white font-base font-medium transition-all active:scale-[0.9]">
+            <button className="bg-[#190E6F] hover:bg-[#454dc0] min-w-[150px] max-w-[200px] py-2 text-white font-base font-medium transition-all active:scale-[0.9]">
               Статус ТТН
             </button>
           </form>
