@@ -16,8 +16,4 @@
     appearance: none;
     margin: 0;
   }
-
-  input:focus~label {
-    @apply top-[-20px] text-green-500
-  }
 }
