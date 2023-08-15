@@ -47,46 +47,6 @@ const OrdersInfo = () => {
               <span className="text-white cursor-pointer hover:text-[#11e962] transition-colors">20450745191462</span>
               <CgCloseR size={20} color={'red'} className="cursor-pointer mx-2" />
             </div>
-            <div className="flex items-center">
-              <span className="text-white cursor-pointer hover:text-[#11e962] transition-colors">20450745191462</span>
-              <CgCloseR size={20} color={'red'} className="cursor-pointer mx-2" />
-            </div>
-            <div className="flex items-center">
-              <span className="text-white cursor-pointer hover:text-[#11e962] transition-colors">20450745191462</span>
-              <CgCloseR size={20} color={'red'} className="cursor-pointer mx-2" />
-            </div>
-            <div className="flex items-center">
-              <span className="text-white cursor-pointer hover:text-[#11e962] transition-colors">20450745191462</span>
-              <CgCloseR size={20} color={'red'} className="cursor-pointer mx-2" />
-            </div>
-            <div className="flex items-center">
-              <span className="text-white cursor-pointer hover:text-[#11e962] transition-colors">20450745191462</span>
-              <CgCloseR size={20} color={'red'} className="cursor-pointer mx-2" />
-            </div>
-            <div className="flex items-center">
-              <span className="text-white cursor-pointer hover:text-[#11e962] transition-colors">20450745191462</span>
-              <CgCloseR size={20} color={'red'} className="cursor-pointer mx-2" />
-            </div>
-            <div className="flex items-center">
-              <span className="text-white cursor-pointer hover:text-[#11e962] transition-colors">20450745191462</span>
-              <CgCloseR size={20} color={'red'} className="cursor-pointer mx-2" />
-            </div>
-            <div className="flex items-center">
-              <span className="text-white cursor-pointer hover:text-[#11e962] transition-colors">20450745191462</span>
-              <CgCloseR size={20} color={'red'} className="cursor-pointer mx-2" />
-            </div>
-            <div className="flex items-center">
-              <span className="text-white cursor-pointer hover:text-[#11e962] transition-colors">20450745191462</span>
-              <CgCloseR size={20} color={'red'} className="cursor-pointer mx-2" />
-            </div>
-            <div className="flex items-center">
-              <span className="text-white cursor-pointer hover:text-[#11e962] transition-colors">20450745191462</span>
-              <CgCloseR size={20} color={'red'} className="cursor-pointer mx-2" />
-            </div>
-            <div className="flex items-center">
-              <span className="text-white cursor-pointer hover:text-[#11e962] transition-colors">20450745191462</span>
-              <CgCloseR size={20} color={'red'} className="cursor-pointer mx-2" />
-            </div>
           </div>
           <button className="bg-[#020c2f] text-white font-medium py-[5px] px-[10px] w-auto hover:bg-[#454dc0] active:scale-[0.9] transition-all">Очистити історію</button>
         </div>

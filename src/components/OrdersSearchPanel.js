@@ -6,7 +6,7 @@ const OrdersSearchPanel = () => {
           Знайти посилку
         </h2>
         <div className="mt-[38px]">
-          <form className="flex flex-row gap-[40px]">
+          <form className="flex flex-col sm:flex-row gap-[40px]">
             <div className="w-full relative">
               <input
                 type="number"
