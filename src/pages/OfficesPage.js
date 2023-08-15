@@ -1,8 +1,9 @@
+import OfficesSearchPanel from "../components/OfficesSearchPanel";
 
 const OfficesPage = () => {
   return (
     <div>
-      OfficesPage
+      <OfficesSearchPanel />
     </div>
   )
 }
