@@ -1,7 +1,7 @@
 const OfficesSearchPanel = () => {
   return (
     <div>
-      <div className="mt-28 flex flex-col">
+      <div className="mt-[60px] flex flex-col">
         <h2 className="text-white text-[21px] font-medium leading-8">
           Відділення
         </h2>
@@ -20,7 +20,7 @@ const OfficesSearchPanel = () => {
               <option className="bg-[#202124]" value="under30kg">Поштове відділення</option>
               <option className="bg-[#202124]" value="more30kg">Вантажне відділення</option>
             </select>
-            <button className="bg-[#190E6F] hover:bg-[#454dc0] min-w-[150px] max-w-[200px] py-2 text-white font-base font-medium transition-all active:scale-[0.9]">
+            <button className="bg-[#020c2f] hover:bg-[#454dc0] min-w-[150px] max-w-[200px] py-2 text-white font-base font-medium transition-all active:scale-[0.9]">
               Пошук
             </button>
           </form>
