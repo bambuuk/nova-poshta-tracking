@@ -25,5 +25,24 @@
     -webkit-background-: transparent !important;
     -webkit-text-fill-color: #fff !important;
   }
+
+  ::-webkit-scrollbar {
+    width: 17px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #888;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #555;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #EB601D;
+  }
 }
 
