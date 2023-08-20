@@ -1,6 +1,10 @@
-import { CgCloseR } from 'react-icons/cg';
-
+import { CgCloseR } from "react-icons/cg";
+import { useSelector } from "react-redux";
+import useGetTTNInfo from "../hooks/useGetTTNInfo";
+// 20450745191462
 const OrdersInfo = () => {
+  
+
   return (
     <div className="mt-[50px]">
       <div className="w-full p-[20px] min-h-[250px] rounded-2xl flex flex-col sm:flex-row bg-[#373737]">
@@ -37,18 +41,28 @@ const OrdersInfo = () => {
               Кропивницький, Полтавська, 60 (маг. АТБ) Поштомат "Нова Пошта"
               №5054: вул. Полтавська, 60 (маг. АТБ)
             </p>
-            <button className="bg-[#020c2f] text-white font-medium py-[5px] px-[10px] w-auto max-w-[250px] hover:bg-[#454dc0] active:scale-[0.9] transition-all">Очистити дані та історію</button>
+            <button className="bg-[#020c2f] text-white font-medium py-[5px] px-[10px] w-auto max-w-[250px] hover:bg-[#454dc0] active:scale-[0.9] transition-all">
+              Очистити дані та історію
+            </button>
           </div>
         </div>
         <div className="w-[250px] h-[250px] bg-[#475569] self-start sm:self-end rounded-2xl py-3 px-2 mt-4 sm:mt-0 flex flex-col items-center">
           <h3 className="text-white text-xl">Історія пошуку</h3>
           <div className="flex flex-col items-center my-[9px] overflow-y-auto flex-auto">
             <div className="flex items-center">
-              <span className="text-white cursor-pointer hover:text-[#11e962] transition-colors">20450745191462</span>
-              <CgCloseR size={20} color={'red'} className="cursor-pointer mx-2" />
+              <span className="text-white cursor-pointer hover:text-[#11e962] transition-colors">
+                20450745191462
+              </span>
+              <CgCloseR
+                size={20}
+                color={"red"}
+                className="cursor-pointer mx-2"
+              />
             </div>
           </div>
-          <button className="bg-[#020c2f] text-white font-medium py-[5px] px-[10px] w-auto hover:bg-[#454dc0] active:scale-[0.9] transition-all">Очистити історію</button>
+          <button className="bg-[#020c2f] text-white font-medium py-[5px] px-[10px] w-auto hover:bg-[#454dc0] active:scale-[0.9] transition-all">
+            Очистити історію
+          </button>
         </div>
       </div>
     </div>
