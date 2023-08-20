@@ -9,6 +9,7 @@ const useGetTTNInfo = () => {
     useGetOrderInfoMutation();
   const dispatch = useDispatch();
   const data = useSelector((state) => state.api.mutations);
+  const currentOrderInfo = useSelector((state) => state.ordersHistorySlice.currentOrderInfo);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -24,14 +25,16 @@ const useGetTTNInfo = () => {
         WarehouseSenderAddress,
         WarehouseRecipientAddress,
       } = Object.values(data)[0].data.data[0];
-      
-      const orderInfo = {
-        orderNumber: Number,
-        status: Status,
-        date: RecipientDateTime,
-        sender: WarehouseSenderAddress,
-        recipient: WarehouseRecipientAddress,
-      };
+
+      const orderInfo = [
+        {
+          orderNumber: Number,
+          status: Status,
+          date: RecipientDateTime,
+          sender: WarehouseSenderAddress,
+          recipient: WarehouseRecipientAddress,
+        },
+      ];
       dispatch(getCurrentOrderInfo(orderInfo));
       setOrderNumber("");
     }
@@ -43,6 +46,7 @@ const useGetTTNInfo = () => {
     onSubmit,
     isLoading,
     isError,
+    currentOrderInfo
   };
 };
 

@@ -1,50 +1,53 @@
 import { CgCloseR } from "react-icons/cg";
-import { useSelector } from "react-redux";
 import useGetTTNInfo from "../hooks/useGetTTNInfo";
 // 20450745191462
 const OrdersInfo = () => {
+  const { currentOrderInfo } = useGetTTNInfo();
   
+  const content = currentOrderInfo.length > 0
+    ? (
+      <div className="flex flex-col sm:max-w-[500px]">
+        <p className="text-white text-base mb-3">
+          <span className="text-[#11e962] mb-[5px]">Номер ТТН:</span>
+          <br />
+          {currentOrderInfo[0].orderNumber}
+        </p>
+
+        <p className="text-white text-base mb-3">
+          <span className="text-[#11e962] mb-[5px]">Статус доставки:</span>
+          <br />
+          {currentOrderInfo[0].status}
+        </p>
+
+        <p className="text-white text-base mb-3">
+          <span className="text-[#11e962] mb-[5px]">Дата отримання:</span>
+          <br />
+          {currentOrderInfo[0].date}
+        </p>
+
+        <p className="text-white text-base mb-3">
+          <span className="text-[#11e962] mb-[5px]">Відправлення:</span>
+          <br />
+          {currentOrderInfo[0].sender}
+        </p>
+
+        <p className="text-white text-base mb-3">
+          <span className="text-[#11e962] mb-[5px]">Отриманання:</span>
+          <br />
+          {currentOrderInfo[0].recipient}
+        </p>
+        <button className="bg-[#020c2f] text-white font-medium py-[5px] px-[10px] w-auto max-w-[250px] hover:bg-[#454dc0] active:scale-[0.9] transition-all">
+          Очистити дані та історію
+        </button>
+      </div>
+    )
+    : "";
 
   return (
-    <div className="mt-[50px]">
+    <div className={currentOrderInfo.length === 1 ? "mt-[50px]" : 'hidden'}>
       <div className="w-full p-[20px] min-h-[250px] rounded-2xl flex flex-col sm:flex-row bg-[#373737]">
         <div className="flex-auto mr-2">
-          <div className="flex flex-col sm:max-w-[500px]">
-            <p className="text-white text-base mb-3">
-              <span className="text-[#11e962] mb-[5px]">Номер ТТН:</span>
-              <br />
-              20450745191462
-            </p>
-
-            <p className="text-white text-base mb-3">
-              <span className="text-[#11e962] mb-[5px]">Статус доставки:</span>
-              <br />
-              Відправлення отримано
-            </p>
-
-            <p className="text-white text-base mb-3">
-              <span className="text-[#11e962] mb-[5px]">Орієнтована дата:</span>
-              <br />
-              2023-07-21 09:19:37
-            </p>
-
-            <p className="text-white text-base mb-3">
-              <span className="text-[#11e962] mb-[5px]">Відправлення:</span>
-              <br />
-              Харків, Тюрінська (ран. Якіра), 124 Відділення №3: вул. Тюрінська
-              (ран. Якіра), 124
-            </p>
-
-            <p className="text-white text-base mb-3">
-              <span className="text-[#11e962] mb-[5px]">Отриманання:</span>
-              <br />
-              Кропивницький, Полтавська, 60 (маг. АТБ) Поштомат "Нова Пошта"
-              №5054: вул. Полтавська, 60 (маг. АТБ)
-            </p>
-            <button className="bg-[#020c2f] text-white font-medium py-[5px] px-[10px] w-auto max-w-[250px] hover:bg-[#454dc0] active:scale-[0.9] transition-all">
-              Очистити дані та історію
-            </button>
-          </div>
+          {content}
         </div>
         <div className="w-[250px] h-[250px] bg-[#475569] self-start sm:self-end rounded-2xl py-3 px-2 mt-4 sm:mt-0 flex flex-col items-center">
           <h3 className="text-white text-xl">Історія пошуку</h3>
