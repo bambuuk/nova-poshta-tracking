@@ -1,7 +1,8 @@
 import useGetTTNInfo from "../hooks/useGetTTNInfo";
+import SyncLoader from "react-spinners/SyncLoader";
 
 const OrdersSearchPanel = () => {
-  const { orderNumber, setOrderNumber, onSubmit } = useGetTTNInfo();
+  const { orderNumber, setOrderNumber, onSubmit, isLoading } = useGetTTNInfo();
 
   return (
     <div>
@@ -25,7 +26,7 @@ const OrdersSearchPanel = () => {
               />
             </div>
             <button className="bg-[#190E6F] hover:bg-[#454dc0] min-w-[150px] max-w-[200px] py-2 text-white font-base font-medium transition-all active:scale-[0.9]">
-              Статус ТТН
+              {isLoading ? <SyncLoader color="white" /> : 'Статус ТТН'}
             </button>
           </form>
         </div>
