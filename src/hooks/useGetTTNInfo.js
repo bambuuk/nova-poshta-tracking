@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { useGetOrderInfoMutation } from "../api/apiSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { getCurrentOrderInfo, addNumToHistoryList } from "../store/ordersHistorySlice";
+import {
+  getCurrentOrderInfo,
+  addNumToHistoryList,
+} from "../store/ordersHistorySlice";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
@@ -11,7 +14,9 @@ const useGetTTNInfo = () => {
     useGetOrderInfoMutation();
   const dispatch = useDispatch();
   const data = useSelector((state) => state.api.mutations);
-  const currentOrderInfo = useSelector((state) => state.ordersHistorySlice.currentOrderInfo);
+  const currentOrderInfo = useSelector(
+    (state) => state.ordersHistorySlice.currentOrderInfo
+  );
 
   const orderNumberRegExp = /^(\d{14})$/;
 
@@ -24,16 +29,17 @@ const useGetTTNInfo = () => {
         .matches(orderNumberRegExp, "Має складатись з 14 цифр")
         .required("Обов'язкове поле"),
     }),
-    onSubmit: ({orderNumber}, { resetForm }) => {
-      getOrderInfo(orderNumber).unwrap();
+    onSubmit: ({ orderNumber }, { resetForm }) => {
+      if (+currentOrderInfo[0].orderNumber !== orderNumber) {
+        getOrderInfo(orderNumber).unwrap();
+      } 
       resetForm();
     },
   });
 
   useEffect(() => {
     if (isSuccess && Object.values(data)[0].data.success) {
-      console.log(Object.values(data)[0].data.data[0]);
-      
+
       const {
         Number,
         Status,
@@ -47,7 +53,10 @@ const useGetTTNInfo = () => {
         {
           orderNumber: Number,
           status: Status,
-          date: RecipientDateTime === '' ? ScheduledDeliveryDate : RecipientDateTime,
+          date:
+            RecipientDateTime === ""
+              ? ScheduledDeliveryDate
+              : RecipientDateTime,
           sender: WarehouseSenderAddress,
           recipient: WarehouseRecipientAddress,
         },
@@ -64,7 +73,7 @@ const useGetTTNInfo = () => {
     isLoading,
     isError,
     currentOrderInfo,
-    orderNumberFormik
+    orderNumberFormik,
   };
 };
 
