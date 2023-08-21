@@ -1,8 +1,11 @@
 import useGetTTNInfo from "../hooks/useGetTTNInfo";
 import SyncLoader from "react-spinners/SyncLoader";
 
+// 20450745191462
+
 const OrdersSearchPanel = () => {
-  const { orderNumber, setOrderNumber, onSubmit, isLoading } = useGetTTNInfo();
+  const { isLoading, orderNumberFormik } =
+    useGetTTNInfo();
 
   return (
     <div>
@@ -13,20 +16,28 @@ const OrdersSearchPanel = () => {
         <div className="mt-[38px]">
           <form
             className="flex flex-col sm:flex-row gap-[40px]"
-            onSubmit={onSubmit}
+            onSubmit={orderNumberFormik.handleSubmit}
           >
             <div className="w-full relative">
               <input
                 type="number"
-                value={orderNumber}
-                onChange={(e) => setOrderNumber(e.target.value)}
-                required
+                name="orderNumber"
+                value={orderNumberFormik.values.orderNumber}
+                onChange={orderNumberFormik.handleChange}
                 placeholder="Введіть ваш ТТН"
                 className="w-full bg-transparent border-b-2 border-solid border-white outline-none text-white focus:border-[#11e962] pb-[5px] pl-[0px] pt-[25px] transition-all placeholder:transition-transform focus:placeholder:transition-transform focus:placeholder:translate-y-[-25px] duration-300 focus:placeholder:text-[#11e962] "
               />
+              {orderNumberFormik.errors.orderNumber ? (
+                <div className="text-red-500 absolute">
+                  {orderNumberFormik.errors.orderNumber}
+                </div>
+              ) : null}
             </div>
-            <button className="bg-[#190E6F] hover:bg-[#454dc0] min-w-[150px] max-w-[200px] py-2 text-white font-base font-medium transition-all active:scale-[0.9]">
-              {isLoading ? <SyncLoader color="white" /> : 'Статус ТТН'}
+            <button
+              type="submit"
+              className="bg-[#190E6F] hover:bg-[#454dc0] min-w-[150px] max-w-[200px] py-2 text-white font-base font-medium transition-all active:scale-[0.9]"
+            >
+              {isLoading ? <SyncLoader color="white" /> : "Статус ТТН"}
             </button>
           </form>
         </div>

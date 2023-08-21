@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useGetOrderInfoMutation } from "../api/apiSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { getCurrentOrderInfo } from "../store/ordersHistorySlice";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 const useGetTTNInfo = () => {
   const [orderNumber, setOrderNumber] = useState("");
@@ -11,13 +13,26 @@ const useGetTTNInfo = () => {
   const data = useSelector((state) => state.api.mutations);
   const currentOrderInfo = useSelector((state) => state.ordersHistorySlice.currentOrderInfo);
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    getOrderInfo(orderNumber).unwrap();
-  };
+  const orderNumberRegExp = /^(\d{14})$/;
+
+  const orderNumberFormik = useFormik({
+    initialValues: {
+      orderNumber: "",
+    },
+    validationSchema: Yup.object({
+      orderNumber: Yup.string()
+        .matches(orderNumberRegExp, "Має складатись з 14 цифр")
+        .required("Обов'язкове поле"),
+    }),
+    onSubmit: ({orderNumber}) => {
+      console.log(orderNumber)
+      getOrderInfo(orderNumber).unwrap();
+    },
+  });
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess && Object.values(data)[0].data.success) {
+      
       const {
         Number,
         Status,
@@ -41,12 +56,12 @@ const useGetTTNInfo = () => {
   }, [isSuccess, data, dispatch]);
 
   return {
-    orderNumber,
     setOrderNumber,
-    onSubmit,
+    getOrderInfo,
     isLoading,
     isError,
-    currentOrderInfo
+    currentOrderInfo,
+    orderNumberFormik
   };
 };
 

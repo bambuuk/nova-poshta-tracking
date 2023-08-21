@@ -1,6 +1,6 @@
 import { CgCloseR } from "react-icons/cg";
 import useGetTTNInfo from "../hooks/useGetTTNInfo";
-// 20450745191462
+
 const OrdersInfo = () => {
   const { currentOrderInfo } = useGetTTNInfo();
   
