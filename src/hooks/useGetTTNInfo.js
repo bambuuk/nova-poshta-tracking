@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useGetOrderInfoMutation } from "../api/apiSlice";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -9,7 +9,6 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 const useGetTTNInfo = () => {
-  const [orderNumber, setOrderNumber] = useState("");
   const [getOrderInfo, { isLoading, isError, isSuccess }] =
     useGetOrderInfoMutation();
   const dispatch = useDispatch();
@@ -72,17 +71,16 @@ const useGetTTNInfo = () => {
       if (!ordersHistory.includes(Number.toString())) {
         dispatch(addNumToHistoryList(Number));
       }
-      setOrderNumber("");
     }
-  }, [isSuccess, data, dispatch]);
+  }, [isSuccess, data, dispatch, ordersHistory]);
 
   return {
-    setOrderNumber,
     getOrderInfo,
     isLoading,
     isError,
     currentOrderInfo,
     orderNumberFormik,
+    ordersHistory,
   };
 };
 
