@@ -32,11 +32,13 @@ const useGetTTNInfo = () => {
 
   useEffect(() => {
     if (isSuccess && Object.values(data)[0].data.success) {
+      console.log(Object.values(data)[0].data.data[0]);
       
       const {
         Number,
         Status,
         RecipientDateTime,
+        ScheduledDeliveryDate,
         WarehouseSenderAddress,
         WarehouseRecipientAddress,
       } = Object.values(data)[0].data.data[0];
@@ -45,7 +47,7 @@ const useGetTTNInfo = () => {
         {
           orderNumber: Number,
           status: Status,
-          date: RecipientDateTime,
+          date: RecipientDateTime === '' ? ScheduledDeliveryDate : RecipientDateTime,
           sender: WarehouseSenderAddress,
           recipient: WarehouseRecipientAddress,
         },

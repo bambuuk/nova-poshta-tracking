@@ -10,31 +10,31 @@ const OrdersInfo = () => {
         <p className="text-white text-base mb-3">
           <span className="text-[#11e962] mb-[5px]">Номер ТТН:</span>
           <br />
-          {currentOrderInfo[0].orderNumber}
+          {currentOrderInfo[0].orderNumber !== '' ? currentOrderInfo[0].orderNumber : 'Інформація відсутня' }
         </p>
 
         <p className="text-white text-base mb-3">
           <span className="text-[#11e962] mb-[5px]">Статус доставки:</span>
           <br />
-          {currentOrderInfo[0].status}
+          {currentOrderInfo[0].status !== '' ? currentOrderInfo[0].status : 'Інформація відсутня' }
         </p>
 
         <p className="text-white text-base mb-3">
-          <span className="text-[#11e962] mb-[5px]">Дата отримання:</span>
+          <span className="text-[#11e962] mb-[5px]">Орієнтовна дата:</span>
           <br />
-          {currentOrderInfo[0].date}
+          {currentOrderInfo[0].date !== '' ? currentOrderInfo[0].date : 'Інформація відсутня' }
         </p>
 
         <p className="text-white text-base mb-3">
           <span className="text-[#11e962] mb-[5px]">Відправлення:</span>
           <br />
-          {currentOrderInfo[0].sender}
+          {currentOrderInfo[0].sender !== '' ? currentOrderInfo[0].sender : 'Інформація відсутня' }
         </p>
 
         <p className="text-white text-base mb-3">
           <span className="text-[#11e962] mb-[5px]">Отриманання:</span>
           <br />
-          {currentOrderInfo[0].recipient}
+          {currentOrderInfo[0].recipient !== '' ? currentOrderInfo[0].recipient : 'Інформація відсутня' }
         </p>
         <button className="bg-[#020c2f] text-white font-medium py-[5px] px-[10px] w-auto max-w-[250px] hover:bg-[#454dc0] active:scale-[0.9] transition-all">
           Очистити дані та історію
