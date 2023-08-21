@@ -17,6 +17,9 @@ const useGetTTNInfo = () => {
   const currentOrderInfo = useSelector(
     (state) => state.ordersHistorySlice.currentOrderInfo
   );
+  const ordersHistory = useSelector(
+    (state) => state.ordersHistorySlice.ordersHistory
+  );
 
   const orderNumberRegExp = /^(\d{14})$/;
 
@@ -30,10 +33,14 @@ const useGetTTNInfo = () => {
         .required("Обов'язкове поле"),
     }),
     onSubmit: ({ orderNumber }, { resetForm }) => {
-      if (+currentOrderInfo[0].orderNumber !== orderNumber) {
+      if (currentOrderInfo.length === 0) {
         getOrderInfo(orderNumber).unwrap();
-      } 
-      resetForm();
+        resetForm();
+      } else if (+currentOrderInfo[0].orderNumber !== orderNumber) {
+        getOrderInfo(orderNumber).unwrap();
+        resetForm();
+      }
+      resetForm(); 
     },
   });
 
@@ -62,7 +69,9 @@ const useGetTTNInfo = () => {
         },
       ];
       dispatch(getCurrentOrderInfo(orderInfo));
-      dispatch(addNumToHistoryList(Number));
+      if (!ordersHistory.includes(Number.toString())) {
+        dispatch(addNumToHistoryList(Number));
+      }
       setOrderNumber("");
     }
   }, [isSuccess, data, dispatch]);
