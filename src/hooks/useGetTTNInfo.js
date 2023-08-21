@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useGetOrderInfoMutation } from "../api/apiSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { getCurrentOrderInfo } from "../store/ordersHistorySlice";
+import { getCurrentOrderInfo, addNumToHistoryList } from "../store/ordersHistorySlice";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
@@ -24,9 +24,9 @@ const useGetTTNInfo = () => {
         .matches(orderNumberRegExp, "Має складатись з 14 цифр")
         .required("Обов'язкове поле"),
     }),
-    onSubmit: ({orderNumber}) => {
-      console.log(orderNumber)
+    onSubmit: ({orderNumber}, { resetForm }) => {
       getOrderInfo(orderNumber).unwrap();
+      resetForm();
     },
   });
 
@@ -51,6 +51,7 @@ const useGetTTNInfo = () => {
         },
       ];
       dispatch(getCurrentOrderInfo(orderInfo));
+      dispatch(addNumToHistoryList(Number));
       setOrderNumber("");
     }
   }, [isSuccess, data, dispatch]);
