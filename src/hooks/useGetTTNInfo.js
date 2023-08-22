@@ -20,6 +20,10 @@ const useGetTTNInfo = () => {
     (state) => state.ordersHistorySlice.ordersHistory
   );
 
+  const ordersRequest = (ordNum) => {
+    getOrderInfo(ordNum).unwrap();
+  };
+
   const orderNumberRegExp = /^(\d{14})$/;
 
   const orderNumberFormik = useFormik({
@@ -39,37 +43,48 @@ const useGetTTNInfo = () => {
         getOrderInfo(orderNumber).unwrap();
         resetForm();
       }
-      resetForm(); 
+      resetForm();
     },
   });
 
   useEffect(() => {
-    if (isSuccess && Object.values(data)[0].data.success) {
+    if (isSuccess) {
+      if (
+        Object.values(data)[Object.values(data).length - 1].status ===
+        "fulfilled"
+      ) {
+        console.log(
+          Object.values(data)[Object.values(data).length - 1].status,
+          Object.values(data)[Object.values(data).length - 1].data,
+          isSuccess
+        );
+        // console.log(Object.values(data))
+        const {
+          Number,
+          Status,
+          RecipientDateTime,
+          ScheduledDeliveryDate,
+          WarehouseSenderAddress,
+          WarehouseRecipientAddress,
+        } = Object.values(data)[Object.values(data).length - 1].data.data[0];
 
-      const {
-        Number,
-        Status,
-        RecipientDateTime,
-        ScheduledDeliveryDate,
-        WarehouseSenderAddress,
-        WarehouseRecipientAddress,
-      } = Object.values(data)[0].data.data[0];
-
-      const orderInfo = [
-        {
-          orderNumber: Number,
-          status: Status,
-          date:
-            RecipientDateTime === ""
-              ? ScheduledDeliveryDate
-              : RecipientDateTime,
-          sender: WarehouseSenderAddress,
-          recipient: WarehouseRecipientAddress,
-        },
-      ];
-      dispatch(getCurrentOrderInfo(orderInfo));
-      if (!ordersHistory.includes(Number.toString())) {
-        dispatch(addNumToHistoryList(Number));
+        const orderInfo = [
+          {
+            orderNumber: Number,
+            status: Status,
+            date:
+              RecipientDateTime === ""
+                ? ScheduledDeliveryDate
+                : RecipientDateTime,
+            sender: WarehouseSenderAddress,
+            recipient: WarehouseRecipientAddress,
+          },
+        ];
+        dispatch(getCurrentOrderInfo(orderInfo));
+        if (!ordersHistory.includes(Number.toString())) {
+          dispatch(addNumToHistoryList(Number));
+          console.log(Number);
+        }
       }
     }
   }, [isSuccess, data, dispatch, ordersHistory]);
@@ -81,6 +96,7 @@ const useGetTTNInfo = () => {
     currentOrderInfo,
     orderNumberFormik,
     ordersHistory,
+    ordersRequest,
   };
 };
 
