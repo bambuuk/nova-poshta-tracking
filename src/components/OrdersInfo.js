@@ -4,8 +4,13 @@ import MoonLoader from "react-spinners/MoonLoader";
 import OrdersHistoryItem from "./OrderHistoryItem";
 
 const OrdersInfo = () => {
-  const { currentOrderInfo, ordersHistory, isLoading, onDeleteHistoryList } =
-    useGetTTNInfo();
+  const {
+    currentOrderInfo,
+    ordersHistory,
+    isLoading,
+    onDeleteHistoryList,
+    onDelOrderInfoAndOrdersHistory,
+  } = useGetTTNInfo();
 
   const content =
     currentOrderInfo.length > 0 ? (
@@ -49,7 +54,10 @@ const OrdersInfo = () => {
             ? currentOrderInfo[0].recipient
             : "Інформація відсутня"}
         </p>
-        <button className="bg-[#020c2f] text-white font-medium py-[5px] px-[10px] w-auto max-w-[250px] hover:bg-[#454dc0] active:scale-[0.9] transition-all">
+        <button
+          onClick={onDelOrderInfoAndOrdersHistory}
+          className="bg-[#020c2f] text-white font-medium py-[5px] px-[10px] w-auto max-w-[250px] hover:bg-[#454dc0] active:scale-[0.9] transition-all"
+        >
           Очистити дані та історію
         </button>
       </div>
@@ -68,12 +76,19 @@ const OrdersInfo = () => {
         <div className="w-[250px] h-[250px] bg-[#475569] self-start sm:self-end rounded-2xl py-3 px-4 mt-4 sm:mt-0 flex flex-col items-start">
           <h3 className="text-white text-xl flex">
             Історія пошуку{" "}
-            {isLoading ? <MoonLoader color="#11e962" size={22} className="ml-3" /> : ""}
+            {isLoading ? (
+              <MoonLoader color="#11e962" size={22} className="ml-3" />
+            ) : (
+              ""
+            )}
           </h3>
           <div className="flex flex-col items-start my-[9px] overflow-y-auto flex-auto">
             {ordersHistoryContent}
           </div>
-          <button onClick={onDeleteHistoryList} className="bg-[#020c2f] text-white font-medium py-[5px] px-[10px] w-auto hover:bg-[#454dc0] active:scale-[0.9] transition-all">
+          <button
+            onClick={onDeleteHistoryList}
+            className="bg-[#020c2f] text-white font-medium py-[5px] px-[10px] w-auto hover:bg-[#454dc0] active:scale-[0.9] transition-all"
+          >
             Очистити історію
           </button>
         </div>

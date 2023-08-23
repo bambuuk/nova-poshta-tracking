@@ -4,7 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   getCurrentOrderInfo,
   addNumToHistoryList,
-  deleteHistoryList
+  deleteHistoryList, 
+  deleteCurrentOrderInfo
 } from "../store/ordersHistorySlice";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -52,6 +53,11 @@ const useGetTTNInfo = () => {
     dispatch(deleteHistoryList());
   }
 
+  const onDelOrderInfoAndOrdersHistory = () => {
+    onDeleteHistoryList();
+    dispatch(deleteCurrentOrderInfo());
+  }
+
   useEffect(() => {
     if (isSuccess) {
       const lastData = Object.values(data)[Object.values(data).length - 1];
@@ -94,7 +100,8 @@ const useGetTTNInfo = () => {
     orderNumberFormik,
     ordersHistory,
     ordersRequest,
-    onDeleteHistoryList
+    onDeleteHistoryList,
+    onDelOrderInfoAndOrdersHistory
   };
 };
 
