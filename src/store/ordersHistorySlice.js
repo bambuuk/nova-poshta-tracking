@@ -19,7 +19,6 @@ const ordersHistorySlice = createSlice({
       if (!state.ordersHistory.includes(action.payload.toString())) {
         state.ordersHistory = [...state.ordersHistory, action.payload];
       }
-      // state.ordersHistory = [...state.ordersHistory, action.payload];
     },
     deleteHistoryList: (state) => {
       state.ordersHistory = [];

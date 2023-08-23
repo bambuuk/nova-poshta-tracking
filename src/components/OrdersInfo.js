@@ -4,7 +4,7 @@ import MoonLoader from "react-spinners/MoonLoader";
 import OrdersHistoryItem from "./OrderHistoryItem";
 
 const OrdersInfo = () => {
-  const { currentOrderInfo, ordersHistory, isLoading } =
+  const { currentOrderInfo, ordersHistory, isLoading, onDeleteHistoryList } =
     useGetTTNInfo();
 
   const content =
@@ -73,7 +73,7 @@ const OrdersInfo = () => {
           <div className="flex flex-col items-start my-[9px] overflow-y-auto flex-auto">
             {ordersHistoryContent}
           </div>
-          <button className="bg-[#020c2f] text-white font-medium py-[5px] px-[10px] w-auto hover:bg-[#454dc0] active:scale-[0.9] transition-all">
+          <button onClick={onDeleteHistoryList} className="bg-[#020c2f] text-white font-medium py-[5px] px-[10px] w-auto hover:bg-[#454dc0] active:scale-[0.9] transition-all">
             Очистити історію
           </button>
         </div>
