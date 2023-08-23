@@ -49,16 +49,11 @@ const useGetTTNInfo = () => {
 
   useEffect(() => {
     if (isSuccess) {
+      const lastData = Object.values(data)[Object.values(data).length - 1];
       if (
-        Object.values(data)[Object.values(data).length - 1].status ===
+        lastData.status ===
         "fulfilled"
       ) {
-        console.log(
-          Object.values(data)[Object.values(data).length - 1].status,
-          Object.values(data)[Object.values(data).length - 1].data,
-          isSuccess
-        );
-        // console.log(Object.values(data))
         const {
           Number,
           Status,
@@ -66,7 +61,7 @@ const useGetTTNInfo = () => {
           ScheduledDeliveryDate,
           WarehouseSenderAddress,
           WarehouseRecipientAddress,
-        } = Object.values(data)[Object.values(data).length - 1].data.data[0];
+        } = lastData.data.data[0];
 
         const orderInfo = [
           {
@@ -81,13 +76,10 @@ const useGetTTNInfo = () => {
           },
         ];
         dispatch(getCurrentOrderInfo(orderInfo));
-        if (!ordersHistory.includes(Number.toString())) {
-          dispatch(addNumToHistoryList(Number));
-          console.log(Number);
-        }
+        dispatch(addNumToHistoryList(Number));
       }
     }
-  }, [isSuccess, data, dispatch, ordersHistory]);
+  }, [isSuccess, data, dispatch]);
 
   return {
     getOrderInfo,
@@ -96,7 +88,7 @@ const useGetTTNInfo = () => {
     currentOrderInfo,
     orderNumberFormik,
     ordersHistory,
-    ordersRequest,
+    ordersRequest
   };
 };
 

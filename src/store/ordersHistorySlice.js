@@ -16,14 +16,28 @@ const ordersHistorySlice = createSlice({
       state.currentOrderInfo = [];
     },
     addNumToHistoryList: (state, action) => {
-      state.ordersHistory = [...state.ordersHistory, action.payload];
+      if (!state.ordersHistory.includes(action.payload.toString())) {
+        state.ordersHistory = [...state.ordersHistory, action.payload];
+      }
+      // state.ordersHistory = [...state.ordersHistory, action.payload];
     },
     deleteHistoryList: (state) => {
       state.ordersHistory = [];
-    }
+    },
+    delItemFromHistList: (state, action) => {
+      state.ordersHistory = state.ordersHistory.filter(
+        (item) => item !== action.payload
+      );
+    },
   },
 });
 
 const { actions, reducer } = ordersHistorySlice;
 export default reducer;
-export const { getCurrentOrderInfo, deleteCurrentOrderInfo, addNumToHistoryList, deleteHistoryList } = actions;
+export const {
+  getCurrentOrderInfo,
+  deleteCurrentOrderInfo,
+  addNumToHistoryList,
+  deleteHistoryList,
+  delItemFromHistList,
+} = actions;

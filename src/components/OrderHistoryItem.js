@@ -1,14 +1,20 @@
 import { useCallback } from "react";
 import { CgCloseR } from "react-icons/cg";
 import useGetTTNInfo from "../hooks/useGetTTNInfo";
+import { delItemFromHistList } from "../store/ordersHistorySlice";
+import { useDispatch } from "react-redux";
 
 const OrdersHistoryItem = ({ item }) => {
-  const { ordersRequest } =
-    useGetTTNInfo();
+  const dispatch = useDispatch();
+  const { ordersRequest } = useGetTTNInfo();
 
   const handleClick = useCallback(() => {
     ordersRequest(item);
   }, [ordersRequest, item]);
+
+  const deleteItem = useCallback((num) => {
+      dispatch(delItemFromHistList(num));
+  }, [dispatch]);
 
   return (
     <div className="flex items-center">
@@ -18,7 +24,12 @@ const OrdersHistoryItem = ({ item }) => {
       >
         {item}
       </span>
-      <CgCloseR size={20} color={"red"} className="cursor-pointer mx-2" />
+      <CgCloseR
+        onClick={() => deleteItem(item)}
+        size={20}
+        color={"red"}
+        className="cursor-pointer mx-2"
+      />
     </div>
   );
 };
