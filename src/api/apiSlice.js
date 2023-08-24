@@ -27,7 +27,7 @@ export const apiSlice = createApi({
       invalidatesTags: ["OrderInfo"],
     }),
     getOfficesInfo: builder.mutation({
-      query: (cityName, branchType) => ({
+      query: (cityName) => ({
         url: "",
         method: "POST",
         body: {
@@ -36,7 +36,6 @@ export const apiSlice = createApi({
           calledMethod: "getWarehouses",
           methodProperties: {
             CityName: cityName,
-            WarehouseType: branchType,
           },
         },
       }),

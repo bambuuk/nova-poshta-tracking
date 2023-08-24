@@ -12,9 +12,11 @@ import {
 import storage from "redux-persist/lib/storage";
 import { apiSlice } from "../api/apiSlice";
 import ordersHistorySlice from "./ordersHistorySlice";
+import officesList from './officesSlice';
 
 const rootReducer = combineReducers({
   ordersHistorySlice,
+  officesList,
   [apiSlice.reducerPath]: apiSlice.reducer,
 });
 
