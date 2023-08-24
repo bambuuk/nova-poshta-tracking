@@ -13,7 +13,8 @@ const useGetOfficesInfo = () => {
     useGetOfficesInfoMutation();
   const [city, setCity] = useState("");
   const [officeType, setOfficeType] = useState("");
-  const data = useSelector((state) => state.api.mutations);
+  const data = useSelector(state => state.api.mutations);
+  const actualOfficesList = useSelector(state => state.officesList.officesItemList);
   const dispatch = useDispatch();
 
   const officesRequest = (cityName, branchType) => {
@@ -71,6 +72,7 @@ const useGetOfficesInfo = () => {
     onSubmit,
     onChangeOfficeType,
     officeType,
+    actualOfficesList
   };
 };
 
