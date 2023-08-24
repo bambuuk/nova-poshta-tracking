@@ -5,7 +5,7 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: `https://api.novaposhta.ua/v2.0/json/`,
   }),
-  tagTypes: ['OrderInfo'],
+  tagTypes: ['OrderInfo', 'OfficesInfo'],
   endpoints: (builder) => ({
     getOrderInfo: builder.mutation({
       query: ttnNumber => ({
