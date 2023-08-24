@@ -35,10 +35,10 @@ const OfficesSearchPanel = () => {
               onChange={onChangeOfficeType}
             >
               <option className="bg-[#202124]">Виберіть відділення</option>
-              <option className="bg-[#202124]" value="PostOffice">
+              <option className="bg-[#202124]" value="30">
                 Поштове відділення
               </option>
-              <option className="bg-[#202124]" value="Warehouse">
+              <option className="bg-[#202124]" value="1100">
                 Вантажне відділення
               </option>
             </select>

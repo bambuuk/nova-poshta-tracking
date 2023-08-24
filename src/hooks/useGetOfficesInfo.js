@@ -34,12 +34,32 @@ const useGetOfficesInfo = () => {
     if (isSuccess) {
       const lastData = Object.values(data)[Object.values(data).length - 1];
       if (lastData.status === "fulfilled") {
-        dispatch(getOfficesList(lastData.data.data));
+        const correctData = lastData.data.data
+          .map(
+            ({
+              CityDescription,
+              CategoryOfWarehouse,
+              Description,
+              DistrictCode,
+              Schedule,
+              PlaceMaxWeightAllowed,
+            }) => ({
+              cityName: CityDescription,
+              type: CategoryOfWarehouse,
+              officeNum: Description.match(/№(\d+)/)[1],
+              address: Description,
+              schedule: Schedule,
+              maxWeight: PlaceMaxWeightAllowed,
+              districtCode: DistrictCode,
+            })
+          )
+          .filter((item) => item.maxWeight === officeType);
+        dispatch(getOfficesList(correctData));
         dispatch(changeBranchType(officeType));
-        console.log(lastData.data.data);
+        console.log(correctData);
       }
     }
-  }, [data, isSuccess, dispatch]);
+  }, [data, isSuccess, dispatch, officeType]);
 
   return {
     officesRequest,
