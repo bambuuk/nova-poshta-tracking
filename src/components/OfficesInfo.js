@@ -2,7 +2,7 @@ import useGetOfficesInfo from "../hooks/useGetOfficesInfo";
 import { nanoid } from "nanoid";
 
 const OfficesInfo = () => {
-  const { actualOfficesList } = useGetOfficesInfo();
+  const { actualOfficesList, deleteOfficesInfo } = useGetOfficesInfo();
 
   const officesContent =
     actualOfficesList.length > 0
@@ -50,7 +50,10 @@ const OfficesInfo = () => {
         </div>
 
         <div className="mt-[20px] self-end">
-          <button className="bg-[#020c2f] text-white font-medium py-[5px] px-[10px] w-auto max-h-[35px] hover:bg-[#454dc0] active:scale-[0.9] transition-all">
+          <button
+            onClick={deleteOfficesInfo}
+            className="bg-[#020c2f] text-white font-medium py-[5px] px-[10px] w-auto max-h-[35px] hover:bg-[#454dc0] active:scale-[0.9] transition-all"
+          >
             Очистити
           </button>
         </div>

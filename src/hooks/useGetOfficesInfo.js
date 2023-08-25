@@ -31,6 +31,11 @@ const useGetOfficesInfo = () => {
     console.log(city, officeType);
   };
 
+  const deleteOfficesInfo = () => {
+    dispatch(deleteOfficesList());
+    dispatch(deleteBranchType());
+  }
+
   useEffect(() => {
     if (isSuccess) {
       const lastData = Object.values(data)[Object.values(data).length - 1];
@@ -72,7 +77,8 @@ const useGetOfficesInfo = () => {
     onSubmit,
     onChangeOfficeType,
     officeType,
-    actualOfficesList
+    actualOfficesList,
+    deleteOfficesInfo
   };
 };
 
