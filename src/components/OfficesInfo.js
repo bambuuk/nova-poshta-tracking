@@ -5,8 +5,13 @@ import ScheduleModalWindow from "./ScheduleModalWindow";
 
 const OfficesInfo = () => {
   const { actualOfficesList, deleteOfficesInfo } = useGetOfficesInfo();
-  const { activeScheduleModWind, onActiveModWindow, onCloseModWindow } =
-    useControlModalWindows();
+  const {
+    activeScheduleModWind,
+    onActiveModWindow,
+    onCloseModWindow,
+    schedule,
+    address,
+  } = useControlModalWindows();
 
   const officesContent =
     actualOfficesList.length > 0
@@ -17,7 +22,10 @@ const OfficesInfo = () => {
               className="grid grid-rows-3 sm:grid-rows-none sm:grid-cols-3 text-center sm:text-start w-full items-center"
             >
               <div className="text-white text-base order-3 sm:order-none">
-                <div onClick={onActiveModWindow} className="flex px-2 bg-green-700 max-w-[150px] justify-center rounded-sm text-black font-semibold cursor-pointer hover:bg-green-500 active:scale-[0.9] transition-all select-none mx-auto sm:mx-0">
+                <div
+                  onClick={() => onActiveModWindow(officeNum)}
+                  className="flex px-2 bg-green-700 max-w-[150px] justify-center rounded-sm text-black font-semibold cursor-pointer hover:bg-green-500 active:scale-[0.9] transition-all select-none mx-auto sm:mx-0"
+                >
                   Часи роботи
                 </div>
               </div>
@@ -65,6 +73,8 @@ const OfficesInfo = () => {
       <ScheduleModalWindow
         onCloseModWindow={onCloseModWindow}
         activeScheduleModWind={activeScheduleModWind}
+        schedule={schedule}
+        address={address}
       />
     </div>
   );

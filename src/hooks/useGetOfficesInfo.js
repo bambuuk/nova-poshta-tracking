@@ -13,8 +13,10 @@ const useGetOfficesInfo = () => {
     useGetOfficesInfoMutation();
   const [city, setCity] = useState("");
   const [officeType, setOfficeType] = useState("");
-  const data = useSelector(state => state.api.mutations);
-  const actualOfficesList = useSelector(state => state.officesList.officesItemList);
+  const data = useSelector((state) => state.api.mutations);
+  const actualOfficesList = useSelector(
+    (state) => state.officesList.officesItemList
+  );
   const dispatch = useDispatch();
 
   const officesRequest = (cityName, branchType) => {
@@ -28,13 +30,12 @@ const useGetOfficesInfo = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     officesRequest(city);
-    console.log(city, officeType);
   };
 
   const deleteOfficesInfo = () => {
     dispatch(deleteOfficesList());
     dispatch(deleteBranchType());
-  }
+  };
 
   useEffect(() => {
     if (isSuccess) {
@@ -62,7 +63,6 @@ const useGetOfficesInfo = () => {
           .filter((item) => item.maxWeight === officeType);
         dispatch(getOfficesList(correctData));
         dispatch(changeBranchType(officeType));
-        console.log(correctData);
       }
     }
   }, [data, isSuccess, dispatch, officeType]);
@@ -78,7 +78,7 @@ const useGetOfficesInfo = () => {
     onChangeOfficeType,
     officeType,
     actualOfficesList,
-    deleteOfficesInfo
+    deleteOfficesInfo,
   };
 };
 

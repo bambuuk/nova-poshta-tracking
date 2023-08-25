@@ -1,6 +1,40 @@
 import { RiCloseFill } from "react-icons/ri";
+import { nanoid } from "nanoid";
 
-const ScheduleModalWindow = ({ activeScheduleModWind, onCloseModWindow }) => {
+const ScheduleModalWindow = ({
+  activeScheduleModWind,
+  onCloseModWindow,
+  schedule,
+  address,
+}) => {
+  const scheduleInUkr = Object.entries(schedule).map((item) => {
+    switch (item[0]) {
+      case "Monday":
+        return ["Понеділок", item[1]];
+      case "Tuesday":
+        return ["Вівторок", item[1]];
+      case "Wednesday":
+        return ["Середа", item[1]];
+      case "Thursday":
+        return ["Четвер", item[1]];
+      case "Friday":
+        return ["П'ятниця", item[1]];
+      case "Saturday":
+        return ["Субота", item[1]];
+      case "Sunday":
+        return ["Неділя", item[1]];
+      default:
+        return [];
+    }
+  });
+
+  const scheduleContent = scheduleInUkr.map((item) => (
+    <div key={nanoid()} className="flex flex-row justify-between gap-4">
+      <div>{item[0]}</div>
+      <div className="text-green-500">{item[1]}</div>
+    </div>
+  ));
+
   return (
     <div
       className={
@@ -17,41 +51,9 @@ const ScheduleModalWindow = ({ activeScheduleModWind, onCloseModWindow }) => {
           className="cursor-pointer absolute right-[5px] top-[5px] sm:right-[10px] sm:top-[10px]"
         />
         <div className="flex flex-col items-center text-center text-base font-medium mt-5">
-          <p className="">
-            Відділення №3 (до 30 кг на одне місце): вул. Калачівська, 13 (Стара
-            Дарниця)
-          </p>
+          <p className="">{address}</p>
           <div className="mt-3">Графік роботи</div>
-          <div className="flex flex-col mt-3">
-            <div className="flex flex-row justify-between gap-4">
-              <div>Понеділок</div>
-              <div className="text-green-500">08:00-21:00</div>
-            </div>
-            <div className="flex flex-row justify-between">
-              <div>Вівторок</div>
-              <div className="text-green-500">08:00-21:00</div>
-            </div>
-            <div className="flex flex-row justify-between">
-              <div>Середа</div>
-              <div className="text-green-500">08:00-21:00</div>
-            </div>
-            <div className="flex flex-row justify-between">
-              <div>Четвер</div>
-              <div className="text-green-500">08:00-21:00</div>
-            </div>
-            <div className="flex flex-row justify-between">
-              <div>П'ятниця</div>
-              <div className="text-green-500">08:00-21:00</div>
-            </div>
-            <div className="flex flex-row justify-between">
-              <div>Субота</div>
-              <div className="text-green-500">08:00-21:00</div>
-            </div>
-            <div className="flex flex-row justify-between">
-              <div>Неділя</div>
-              <div className="text-green-500">08:00-21:00</div>
-            </div>
-          </div>
+          <div className="flex flex-col mt-3">{scheduleContent}</div>
         </div>
       </div>
     </div>
