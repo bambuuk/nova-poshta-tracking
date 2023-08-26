@@ -41,6 +41,7 @@ const useGetOfficesInfo = () => {
     if (isSuccess) {
       const lastData = Object.values(data)[Object.values(data).length - 1];
       if (lastData.status === "fulfilled") {
+        console.log(lastData);
         const correctData = lastData.data.data
           .map(
             ({
@@ -53,7 +54,7 @@ const useGetOfficesInfo = () => {
             }) => ({
               cityName: CityDescription,
               type: CategoryOfWarehouse,
-              officeNum: Description.match(/№(\d+)/)[1],
+              officeNum: Description.match(/№\s?(\d+)/)[1],
               address: Description,
               schedule: Schedule,
               maxWeight: PlaceMaxWeightAllowed,

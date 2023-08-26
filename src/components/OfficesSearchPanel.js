@@ -1,9 +1,10 @@
 import useGetOfficesInfo from "../hooks/useGetOfficesInfo";
+import SyncLoader from "react-spinners/SyncLoader";
 
 // Кропивницький
 
 const OfficesSearchPanel = () => {
-  const { setCity, city, onSubmit, onChangeOfficeType, officeType } =
+  const { setCity, city, onSubmit, onChangeOfficeType, officeType, isLoading } =
     useGetOfficesInfo();
 
   return (
@@ -43,7 +44,7 @@ const OfficesSearchPanel = () => {
               </option>
             </select>
             <button className="bg-[#020c2f] hover:bg-[#454dc0] min-w-[150px] max-w-[200px] py-2 text-white font-base font-medium transition-all active:scale-[0.9]">
-              Пошук
+              {isLoading ? <SyncLoader color="white" /> : "Пошук"}
             </button>
           </form>
         </div>
