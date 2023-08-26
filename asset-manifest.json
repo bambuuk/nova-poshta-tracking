@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/nova-poshta-tracking/static/css/main.b39ec681.css",
+    "main.js": "/nova-poshta-tracking/static/js/main.53ca6b51.js",
+    "index.html": "/nova-poshta-tracking/index.html",
+    "main.b39ec681.css.map": "/nova-poshta-tracking/static/css/main.b39ec681.css.map",
+    "main.53ca6b51.js.map": "/nova-poshta-tracking/static/js/main.53ca6b51.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b39ec681.css",
+    "static/js/main.53ca6b51.js"
+  ]
+}
