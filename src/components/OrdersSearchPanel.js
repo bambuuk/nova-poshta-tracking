@@ -10,7 +10,12 @@ const OrdersSearchPanel = () => {
 
   return (
     <div>
-      <div className="mt-28 flex flex-col">
+      <div
+        data-aos="fade-up"
+        data-aos-once="true"
+        data-aos-delay="300"
+        className="mt-28 flex flex-col"
+      >
         <h2 className="text-white text-[21px] font-medium leading-8">
           Знайти посилку
         </h2>
