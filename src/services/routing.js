@@ -1,12 +1,12 @@
 import TTNPage from "../pages/TTNPage";
 import OfficesPage from "../pages/OfficesPage";
-import ErrorPage from '../pages/ErrorPage';
+import ErrorPage from "../pages/ErrorPage";
 import Layout from "./Layout";
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
@@ -15,9 +15,9 @@ export const router = createBrowserRouter([
         element: <TTNPage />,
       },
       {
-        path: 'offices',
-        element: <OfficesPage />
-      }
-    ]
-  }
+        path: "offices",
+        element: <OfficesPage />,
+      },
+    ],
+  },
 ]);

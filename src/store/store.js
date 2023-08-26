@@ -12,7 +12,7 @@ import {
 import storage from "redux-persist/lib/storage";
 import { apiSlice } from "../api/apiSlice";
 import ordersHistorySlice from "./ordersHistorySlice";
-import officesList from './officesSlice';
+import officesList from "./officesSlice";
 
 const rootReducer = combineReducers({
   ordersHistorySlice,
@@ -23,7 +23,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: [apiSlice.reducerPath]
+  blacklist: [apiSlice.reducerPath],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

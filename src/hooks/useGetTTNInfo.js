@@ -6,8 +6,8 @@ import * as Yup from "yup";
 import {
   getCurrentOrderInfo,
   addNumToHistoryList,
-  deleteHistoryList, 
-  deleteCurrentOrderInfo
+  deleteHistoryList,
+  deleteCurrentOrderInfo,
 } from "../store/ordersHistorySlice";
 
 const useGetTTNInfo = () => {
@@ -26,15 +26,13 @@ const useGetTTNInfo = () => {
     getOrderInfo(ordNum).unwrap();
   };
 
-  const orderNumberRegExp = /^(\d{14})$/;
-
   const orderNumberFormik = useFormik({
     initialValues: {
       orderNumber: "",
     },
     validationSchema: Yup.object({
       orderNumber: Yup.string()
-        .matches(orderNumberRegExp, "Має складатись з 14 цифр")
+        .matches(/^(\d{14})$/, "Має складатись з 14 цифр")
         .required("Обов'язкове поле"),
     }),
     onSubmit: ({ orderNumber }, { resetForm }) => {
@@ -51,20 +49,17 @@ const useGetTTNInfo = () => {
 
   const onDeleteHistoryList = () => {
     dispatch(deleteHistoryList());
-  }
+  };
 
   const onDelOrderInfoAndOrdersHistory = () => {
     onDeleteHistoryList();
     dispatch(deleteCurrentOrderInfo());
-  }
+  };
 
   useEffect(() => {
     if (isSuccess) {
       const lastData = Object.values(data)[Object.values(data).length - 1];
-      if (
-        lastData.status ===
-        "fulfilled"
-      ) {
+      if (lastData.status === "fulfilled") {
         const {
           Number,
           Status,
@@ -101,7 +96,7 @@ const useGetTTNInfo = () => {
     ordersHistory,
     ordersRequest,
     onDeleteHistoryList,
-    onDelOrderInfoAndOrdersHistory
+    onDelOrderInfoAndOrdersHistory,
   };
 };
 

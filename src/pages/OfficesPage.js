@@ -7,7 +7,7 @@ const OfficesPage = () => {
       <OfficesSearchPanel />
       <OfficesInfo />
     </div>
-  )
-}
+  );
+};
 
 export default OfficesPage;

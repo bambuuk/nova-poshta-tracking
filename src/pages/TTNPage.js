@@ -1,5 +1,5 @@
-import OrdersSearchPanel from '../components/OrdersSearchPanel';
-import OrdersInfo from '../components/OrdersInfo';
+import OrdersSearchPanel from "../components/OrdersSearchPanel";
+import OrdersInfo from "../components/OrdersInfo";
 
 const TTNPage = () => {
   return (
@@ -7,7 +7,7 @@ const TTNPage = () => {
       <OrdersSearchPanel />
       <OrdersInfo />
     </>
-  )
-}
+  );
+};
 
 export default TTNPage;

@@ -12,9 +12,12 @@ const OrdersHistoryItem = ({ item }) => {
     ordersRequest(item);
   }, [ordersRequest, item]);
 
-  const deleteItem = useCallback((num) => {
+  const deleteItem = useCallback(
+    (num) => {
       dispatch(delItemFromHistList(num));
-  }, [dispatch]);
+    },
+    [dispatch]
+  );
 
   return (
     <div className="flex items-center">
