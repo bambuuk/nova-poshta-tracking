@@ -1,8 +1,6 @@
 import useGetOfficesInfo from "../hooks/useGetOfficesInfo";
 import SyncLoader from "react-spinners/SyncLoader";
 
-// Кропивницький
-
 const OfficesSearchPanel = () => {
   const { officesFormik, isLoading } = useGetOfficesInfo();
 
