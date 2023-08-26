@@ -41,7 +41,6 @@ const useGetOfficesInfo = () => {
     if (isSuccess) {
       const lastData = Object.values(data)[Object.values(data).length - 1];
       if (lastData.status === "fulfilled") {
-        console.log(lastData);
         const correctData = lastData.data.data
           .map(
             ({
@@ -51,17 +50,18 @@ const useGetOfficesInfo = () => {
               DistrictCode,
               Schedule,
               PlaceMaxWeightAllowed,
+              TotalMaxWeightAllowed
             }) => ({
               cityName: CityDescription,
               type: CategoryOfWarehouse,
               officeNum: Description.match(/№\s?(\d+)/)[1],
               address: Description,
               schedule: Schedule,
-              maxWeight: PlaceMaxWeightAllowed,
+              maxWeight: +PlaceMaxWeightAllowed > +TotalMaxWeightAllowed ? PlaceMaxWeightAllowed : TotalMaxWeightAllowed,
               districtCode: DistrictCode,
             })
           )
-          .filter((item) => item.maxWeight === officeType);
+          .filter((item) => +item.maxWeight === 10 ? +item.maxWeight === 10 : item.maxWeight === officeType);
         dispatch(getOfficesList(correctData));
         dispatch(changeBranchType(officeType));
       }
