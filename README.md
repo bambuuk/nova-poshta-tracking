@@ -19,11 +19,11 @@ Adapted for all standard mobile device screen sizes.
 - Deleting parcels history
 - Deleting parcel info and parcels history
 - Using parcels numbers for looking info up from Search history
-![Parcel information]('src/images/readme/parcel-info.png')
+![Parcel information](src/images/readme/parcel-info.png)
 - Looking post offices info up
-![Post offices information]('src/images/readme/post-offices.png')
+![Post offices information](src/images/readme/post-offices.png)
 - Watching work schedule
-![Work schedule information]('src/images/readme/work-schedule.png')
+![Work schedule information](src/images/readme/work-schedule.png)
 
 # Getting Started with Create React App
 
