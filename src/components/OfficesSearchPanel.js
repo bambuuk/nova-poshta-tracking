@@ -9,7 +9,7 @@ const OfficesSearchPanel = () => {
   return (
     <div>
       <div
-        data-aos="fade-up"
+        data-aos="fade-right"
         data-aos-once="true"
         data-aos-delay="300"
         className="mt-[60px] flex flex-col"
