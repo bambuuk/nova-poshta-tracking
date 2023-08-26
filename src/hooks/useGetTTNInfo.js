@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { useGetOrderInfoMutation } from "../api/apiSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import {
   getCurrentOrderInfo,
   addNumToHistoryList,
   deleteHistoryList, 
   deleteCurrentOrderInfo
 } from "../store/ordersHistorySlice";
-import { useFormik } from "formik";
-import * as Yup from "yup";
 
 const useGetTTNInfo = () => {
   const [getOrderInfo, { isLoading, isError, isSuccess }] =

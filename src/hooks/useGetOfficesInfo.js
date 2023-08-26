@@ -1,6 +1,8 @@
 import { useGetOfficesInfoMutation } from "../api/apiSlice";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import {
   getOfficesList,
   deleteOfficesList,
@@ -11,7 +13,6 @@ import {
 const useGetOfficesInfo = () => {
   const [getOfficesInfo, { isLoading, isError, isSuccess }] =
     useGetOfficesInfoMutation();
-  const [city, setCity] = useState("");
   const [officeType, setOfficeType] = useState("");
   const data = useSelector((state) => state.api.mutations);
   const actualOfficesList = useSelector(
@@ -19,23 +20,29 @@ const useGetOfficesInfo = () => {
   );
   const dispatch = useDispatch();
 
-  const officesRequest = (cityName, branchType) => {
-    getOfficesInfo(cityName, branchType).unwrap();
-  };
-
-  const onChangeOfficeType = (e) => {
-    setOfficeType(e.target.value);
-  };
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    officesRequest(city);
-  };
-
   const deleteOfficesInfo = () => {
     dispatch(deleteOfficesList());
     dispatch(deleteBranchType());
   };
+
+  const officesFormik = useFormik({
+    initialValues: {
+      cityName: '',
+      branchType: ''
+    },
+    validationSchema: Yup.object({
+      cityName: Yup.string()
+        .matches(/^[\u0400-\u04FF\s]+$/u, "Місто має включати лиш українські літери")
+        .required("Обов'язкове поле"),
+      branchType: Yup.string()
+        .required("Обов'язкове поле"),
+    }),
+    onSubmit: ({ cityName, branchType }, { resetForm }) => {
+      getOfficesInfo(cityName.trim()).unwrap();
+      setOfficeType(branchType.trim());
+      resetForm();
+    },
+  });
 
   useEffect(() => {
     if (isSuccess) {
@@ -69,17 +76,12 @@ const useGetOfficesInfo = () => {
   }, [data, isSuccess, dispatch, officeType]);
 
   return {
-    officesRequest,
     isLoading,
     isError,
     isSuccess,
-    setCity,
-    city,
-    onSubmit,
-    onChangeOfficeType,
-    officeType,
     actualOfficesList,
     deleteOfficesInfo,
+    officesFormik
   };
 };
 
