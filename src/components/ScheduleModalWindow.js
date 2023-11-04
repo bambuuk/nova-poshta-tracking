@@ -31,7 +31,9 @@ const ScheduleModalWindow = ({
   const scheduleContent = scheduleInUkr.map((item) => (
     <div key={nanoid()} className="flex flex-row justify-between gap-4">
       <div>{item[0]}</div>
-      <div className="text-green-500">{item[1]}</div>
+      <div className="text-green-500" data-testid={`${item[0]} - time`}>
+        {item[1]}
+      </div>
     </div>
   ));
 
