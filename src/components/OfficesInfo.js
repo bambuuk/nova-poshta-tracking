@@ -5,6 +5,7 @@ import ScheduleModalWindow from "./ScheduleModalWindow";
 
 const OfficesInfo = () => {
   const { actualOfficesList, deleteOfficesInfo } = useGetOfficesInfo();
+  console.log(actualOfficesList);
   const {
     activeScheduleModWind,
     onActiveModWindow,
