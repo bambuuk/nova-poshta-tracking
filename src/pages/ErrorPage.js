@@ -4,7 +4,10 @@ const ErrorPage = () => {
   const error = useRouteError();
 
   return (
-    <div className="p-3 absolute w-full h-full flex flex-col items-center justify-center text-white font-bold ">
+    <div 
+      data-testid="error-page"
+      className="p-3 absolute w-full h-full flex flex-col items-center justify-center text-white font-bold "
+    >
       <h1 className="text-4xl tracking-[1.6px]">Уупс!</h1>
       <p className="text-lg mt-6">Вибачте, щось пішло не так</p>
       <p className="text-lg mt-1">{error.statusText ?? error.message}</p>

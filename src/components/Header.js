@@ -10,6 +10,7 @@ const Header = () => {
       <div className="w-[210px]">
         <NavLink
           to="/"
+          data-testid="ttn-link"
           className={({ isActive, isPending }) =>
             isPending
               ? "w-full block bg-[#A4271F] rounded-md py-[15px] text-center"
@@ -24,6 +25,7 @@ const Header = () => {
       <div className="w-[210px] mt-4 sm:mt-0">
         <NavLink
           to="/offices"
+          data-testid="offices-link"
           className={({ isActive, isPending }) =>
             isPending
               ? "w-full block bg-[#A4271F] rounded-md py-[15px] text-center"

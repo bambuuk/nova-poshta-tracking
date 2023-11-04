@@ -3,7 +3,7 @@ import OfficesSearchPanel from "../components/OfficesSearchPanel";
 
 const OfficesPage = () => {
   return (
-    <div>
+    <div data-testid="offices-page">
       <OfficesSearchPanel />
       <OfficesInfo />
     </div>

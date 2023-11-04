@@ -7,7 +7,7 @@
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/user-event": "^14.5.1",
     "aos": "^2.3.4",
     "axios": "^1.4.0",
     "formik": "^2.4.3",
@@ -52,7 +52,36 @@
     ]
   },
   "devDependencies": {
+    "identity-obj-proxy": "^3.0.0",
     "postcss-nested": "^6.0.1",
     "tailwindcss": "^3.3.3"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "/node_modules/(?!(nanoid)/)"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "src/App.js",
+      "src/index.js",
+      "src/services/Layout.js",
+      "src/setupTest.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "lines": 80
+      }
+    },
+    "coverageReporters": [
+      "clover",
+      "json",
+      "lcov",
+      "text"
+    ],
+    "moduleNameMapper": {
+      "\\.css$": "identity-obj-proxy"
+    }
   }
 }
