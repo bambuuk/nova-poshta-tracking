@@ -23,6 +23,7 @@ const OrdersSearchPanel = () => {
           <form
             className="flex flex-col sm:flex-row gap-[40px]"
             onSubmit={orderNumberFormik.handleSubmit}
+            data-testid="form"
           >
             <div className="w-full relative">
               <input
@@ -35,7 +36,10 @@ const OrdersSearchPanel = () => {
                 className="w-full bg-transparent border-b-2 border-solid border-white outline-none text-white focus:border-[#11e962] pb-[5px] pl-[0px] pt-[25px] transition-all placeholder:transition-transform focus:placeholder:transition-transform focus:placeholder:translate-y-[-25px] duration-300 focus:placeholder:text-[#11e962] "
               />
               {orderNumberFormik.errors.orderNumber ? (
-                <div className="text-red-500 absolute">
+                <div
+                  className="text-red-500 absolute"
+                  data-testid="ttn-number-error"
+                >
                   {orderNumberFormik.errors.orderNumber}
                 </div>
               ) : null}
