@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom/extend-expect";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import OrdersInfo from "../components/OrdersInfo";
 import { Provider } from "react-redux";
 import store from "../store/store";
