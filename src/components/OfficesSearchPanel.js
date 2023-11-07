@@ -5,7 +5,7 @@ const OfficesSearchPanel = () => {
   const { officesFormik, isLoading } = useGetOfficesInfo();
 
   return (
-    <div>
+    <div data-testid="offices-search-panel">
       <div
         data-aos="fade-right"
         data-aos-once="true"

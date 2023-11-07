@@ -41,7 +41,10 @@ const OfficesInfo = () => {
       : "";
 
   return (
-    <div className={actualOfficesList.length > 0 ? "mt-[50px]" : "hidden"}>
+    <div
+      className={actualOfficesList.length > 0 ? "mt-[50px]" : "hidden"}
+      data-testid="offices-info"
+    >
       <div className="relative w-full p-[20px] rounded-2xl flex flex-col bg-[#373737] mx-auto h-[340px] overflow-hidden">
         <div className="hidden sm:grid grid-cols-3 text-start max-w-[640px] w-full mx-auto">
           <div className="text-white font-semibold text-xl min-w-[130px]">
