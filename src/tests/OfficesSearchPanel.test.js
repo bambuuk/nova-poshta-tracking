@@ -1,16 +1,12 @@
-import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
+import { fireEvent, screen } from "@testing-library/react";
 import OfficesSearchPanel from "../components/OfficesSearchPanel";
-import { Provider } from "react-redux";
-import store from "../store/store";
+import { renderWithRedux } from "./helpers/renderWithRedux";
 
 describe("OfficesSearchPanel test", () => {
   test("Check UI availability", () => {
-    render(
-      <Provider store={store}>
-        <OfficesSearchPanel />
-      </Provider>
-    );
+    renderWithRedux(<OfficesSearchPanel />);
+
     expect(screen.getByText("Відділення")).toBeInTheDocument();
     expect(screen.getByPlaceholderText("Місто")).toBeInTheDocument();
     expect(screen.getByTestId("branch-type-selector")).toBeInTheDocument();
@@ -18,22 +14,16 @@ describe("OfficesSearchPanel test", () => {
   });
 
   test("Input working test", () => {
-    render(
-      <Provider store={store}>
-        <OfficesSearchPanel />
-      </Provider>
-    );
+    renderWithRedux(<OfficesSearchPanel />);
+
     const cityInput = screen.getByPlaceholderText("Місто");
     fireEvent.change(cityInput, { target: { value: "Київ" } });
     expect(cityInput).toHaveValue("Київ");
   });
 
   test("Select working test", () => {
-    render(
-      <Provider store={store}>
-        <OfficesSearchPanel />
-      </Provider>
-    );
+    renderWithRedux(<OfficesSearchPanel />);
+
     const selectElement = screen.getByTestId("branch-type-selector");
     fireEvent.change(selectElement, { target: { value: "30" } });
     expect(screen.getByText("Поштове відділення")).toBeInTheDocument();

@@ -70,7 +70,8 @@
       "src/services",
       "src/setupTest.js",
       "src/mocks",
-      "src/hooks"
+      "src/hooks",
+      "src/tests/helpers"
     ],
     "coverageThreshold": {
       "global": {

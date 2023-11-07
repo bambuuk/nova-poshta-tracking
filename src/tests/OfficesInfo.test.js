@@ -1,7 +1,5 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import { Provider } from "react-redux";
-import store from "../store/store";
 import { renderWithRedux } from "./helpers/renderWithRedux";
 import OfficesInfo from "../components/OfficesInfo";
 
