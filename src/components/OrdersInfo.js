@@ -70,7 +70,10 @@ const OrdersInfo = () => {
   ));
 
   return (
-    <div className={currentOrderInfo.length === 1 ? "mt-[50px]" : "hidden"}>
+    <div
+      className={currentOrderInfo.length === 1 ? "mt-[50px]" : "hidden"}
+      data-testid="orders-info"
+    >
       <div className="w-full p-[20px] min-h-[250px] rounded-2xl flex flex-col sm:flex-row bg-[#373737]">
         <div className="flex-auto mr-2">{content}</div>
         <div className="w-[250px] h-[250px] bg-[#475569] self-start sm:self-end rounded-2xl py-3 px-4 mt-4 sm:mt-0 flex flex-col items-start">

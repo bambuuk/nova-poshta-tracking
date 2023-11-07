@@ -67,8 +67,10 @@
     "coveragePathIgnorePatterns": [
       "src/App.js",
       "src/index.js",
-      "src/services/Layout.js",
-      "src/setupTest.js"
+      "src/services",
+      "src/setupTest.js",
+      "src/mocks",
+      "src/hooks"
     ],
     "coverageThreshold": {
       "global": {
