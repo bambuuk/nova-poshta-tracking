@@ -42,6 +42,7 @@ const OfficesSearchPanel = () => {
                 className="text-white bg-transparent font-base font-medium outline-none cursor-pointer"
                 value={officesFormik.values.branchType}
                 onChange={officesFormik.handleChange}
+                data-testid="branch-type-selector"
               >
                 <option className="bg-[#202124]">Виберіть відділення</option>
                 <option className="bg-[#202124]" value="30">
