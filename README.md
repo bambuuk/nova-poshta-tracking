@@ -1,29 +1,33 @@
 ## Description
-This multipage application was made with using React, Redux, for tracking orders in Nova Poshta delivery.
+
+This multipage application was created to retrieve information regarding NovaPoshta service's branches and packages. There is I use React, Redux, TailwindCSS.
 Adapted for all standard mobile device screen sizes.
 
 ## Tools:
-- react.js
-- redux-toolkit
-- rtk-query
-- redux-persist
-- react-icons
-- react-router-dom v6
-- react-spinners
-- formik/yup
-- tailwindcss
-- aos
+
+- React
+- Redux-toolkit
+- RTK-query
+- Redux-persist
+- React-icons
+- React-router-dom v6
+- React-spinners
+- Formik/Yup
+- TailwindCSS
+- AOS
+- Jest testing
 
 ## Features:
+
 - Looking parcel info up
 - Deleting parcels history
 - Deleting parcel info and parcels history
 - Using parcels numbers for looking info up from Search history
-![Parcel information](src/images/readme/parcel-info.png)
+  ![Parcel information](src/images/readme/parcel-info.png)
 - Looking post offices info up
-![Post offices information](src/images/readme/post-offices.png)
+  ![Post offices information](src/images/readme/post-offices.png)
 - Watching work schedule
-![Work schedule information](src/images/readme/work-schedule.png)
+  ![Work schedule information](src/images/readme/work-schedule.png)
 
 # Getting Started with Create React App
 
