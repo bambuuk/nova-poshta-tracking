@@ -9,7 +9,7 @@ const OrdersSearchPanel = () => {
   const { isLoading, orderNumberFormik } = useGetTTNInfo();
 
   return (
-    <div>
+    <div data-testid="orders-search-panel">
       <div
         data-aos="fade-right"
         data-aos-once="true"
