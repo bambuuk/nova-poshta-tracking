@@ -20,7 +20,7 @@ const OrdersHistoryItem = ({ item }) => {
   );
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center" data-testid="order-history-item">
       <span
         onClick={handleClick}
         className="text-white cursor-pointer hover:text-[#11e962] transition-colors"

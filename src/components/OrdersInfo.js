@@ -85,7 +85,10 @@ const OrdersInfo = () => {
               ""
             )}
           </h3>
-          <div className="flex flex-col items-start my-[9px] overflow-y-auto flex-auto">
+          <div
+            className="flex flex-col items-start my-[9px] overflow-y-auto flex-auto"
+            data-testid="order-history"
+          >
             {ordersHistoryContent}
           </div>
           <button
