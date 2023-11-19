@@ -44,6 +44,7 @@ const ScheduleModalWindow = ({
           ? "fixed w-full h-full top-0 left-0 bg-black flex justify-center items-center opacity-100 visible transition-all"
           : "fixed w-full h-full top-0 left-0 bg-black flex justify-center items-center opacity-0 invisible transition-all"
       }
+      data-testid="schedule-modal-window"
     >
       <div className="relative text-white p-[10px] sm:p-5 mx-[10px] border-2 border-white rounded-lg max-w-[500px]">
         <RiCloseFill

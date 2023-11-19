@@ -109,5 +109,40 @@ describe("template spec", () => {
     cy.get('select[name="branchType"]').select("Поштове відділення");
     cy.get('select[name="branchType"]').should("have.value", "30");
     cy.contains("div", "Обов'язкове поле").should("not.exist");
+
+    /* Show info about post offices */
+    cy.get('[data-testid="offices-info"]').should(
+      "have.css",
+      "display",
+      "none"
+    );
+    cy.contains("button", "Пошук").click();
+    cy.get('[data-testid="offices-info"]').should(
+      "have.css",
+      "display",
+      "block"
+    );
+
+    /* Correct ScheduleModalWindow work */
+    cy.contains("div", "Часи роботи").should("exist").click();
+    cy.get('[data-testid="schedule-modal-window"]').should(
+      "have.css",
+      "opacity",
+      "1"
+    );
+    cy.get('[data-testid="schedule-modal-window"]').eq(0).find("svg").click();
+    cy.get('[data-testid="schedule-modal-window"]').should(
+      "have.css",
+      "opacity",
+      "0"
+    );
+
+    /* Remove post office info */
+    cy.contains("button", "Очистити").should("exist").click();
+    cy.get('[data-testid="offices-info"]').should(
+      "have.css",
+      "display",
+      "none"
+    );
   });
 });
