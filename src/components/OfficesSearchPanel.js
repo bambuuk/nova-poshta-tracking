@@ -27,10 +27,12 @@ const OfficesSearchPanel = () => {
                 placeholder="Місто"
                 value={officesFormik.values.cityName}
                 onChange={officesFormik.handleChange}
+                onBlur={officesFormik.handleBlur}
                 autoComplete="cityName"
                 className="w-full bg-transparent border-b-2 border-solid border-white outline-none text-white focus:border-[#11e962] pb-[5px] pl-[0px] pt-[25px] transition-all placeholder:transition-transform focus:placeholder:transition-transform focus:placeholder:translate-y-[-25px] duration-300 focus:placeholder:text-[#11e962] "
               />
-              {officesFormik.errors.cityName ? (
+              {officesFormik.errors.cityName &&
+              officesFormik.touched.cityName ? (
                 <div className="text-red-500 absolute leading-none top-[-15px] lg:top-[-10px]">
                   {officesFormik.errors.cityName}
                 </div>
@@ -42,6 +44,7 @@ const OfficesSearchPanel = () => {
                 className="text-white bg-transparent font-base font-medium outline-none cursor-pointer"
                 value={officesFormik.values.branchType}
                 onChange={officesFormik.handleChange}
+                onBlur={officesFormik.handleBlur}
                 data-testid="branch-type-selector"
               >
                 <option className="bg-[#202124]">Виберіть відділення</option>
@@ -52,7 +55,8 @@ const OfficesSearchPanel = () => {
                   Вантажне відділення
                 </option>
               </select>
-              {officesFormik.errors.branchType ? (
+              {officesFormik.errors.branchType &&
+              officesFormik.touched.branchType ? (
                 <div className="text-red-500 absolute sm:left-1 top-[-20px] sm:top-[-15px] lg:top-[-10px] leading-none">
                   {officesFormik.errors.branchType}
                 </div>

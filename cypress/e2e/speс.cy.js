@@ -75,8 +75,39 @@ describe("template spec", () => {
   //   cy.get('[data-testid="order-history"]').children().should("have.length", 0);
   // });
 
-  it("Correct TTN page work", () => {
+  it("Correct Offices page work", () => {
     cy.visit("http://localhost:3000/nova-poshta-tracking/offices");
     cy.get('[data-testid="offices-page"]').should("exist");
+
+    /* There are Статус ТТН button, select and input on the page */
+    cy.contains("button", "Пошук").should("exist");
+    cy.get('input[type="text"]').should("exist");
+    cy.get('select[name="branchType"]').should("exist");
+
+    /* Correct form validation work */
+    cy.get('input[type="text"]').type("Lviv");
+    cy.get('input[type="text"]').should("have.value", "Lviv");
+    cy.get('input[type="text"]').blur();
+    cy.contains("div", "Місто має включати лиш українські літери").should(
+      "exist"
+    );
+
+    cy.get('input[type="text"]').clear();
+    cy.get('input[type="text"]').should("have.value", "");
+    cy.contains("div", "Обов'язкове поле").should("exist");
+
+    cy.get('input[type="text"]').type("Львів");
+    cy.get('input[type="text"]').should("have.value", "Львів");
+    cy.contains("div", "Місто має включати лиш українські літери").should(
+      "not.exist"
+    );
+    cy.contains("div", "Обов'язкове поле").should("not.exist");
+
+    cy.contains("button", "Пошук").click();
+    cy.contains("div", "Обов'язкове поле").should("have.length", 1);
+
+    cy.get('select[name="branchType"]').select("Поштове відділення");
+    cy.get('select[name="branchType"]').should("have.value", "30");
+    cy.contains("div", "Обов'язкове поле").should("not.exist");
   });
 });
