@@ -17,6 +17,16 @@ describe("template spec", () => {
     cy.get('[data-testid="ttn-page"]').should("exist");
     cy.get('[data-testid="offices-page"]').should("not.exist");
     cy.url().should("not.include", "/offices");
+
+    /* Move to unavailable page */
+    cy.visit("http://localhost:3000/nova-poshta-tracking/some-way");
+    cy.get('[data-testid="error-page"]').should("exist");
+
+    /* Return to TTN page from Error page */
+    cy.contains("a", "Повернутись на головну сторінку").should("exist").click();
+    cy.url().should("include", "/nova-poshta-tracking");
+    cy.get('[data-testid="ttn-page"]').should("exist");
+    cy.get('[data-testid="error-page"]').should("not.exist");
   });
 
   it("Correct TTN page work", () => {
