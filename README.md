@@ -15,7 +15,8 @@ Adapted for all standard mobile device screen sizes.
 - Formik/Yup
 - TailwindCSS
 - AOS
-- Jest testing
+- Unit testing with Jest/Testing Library
+- e2e testing with Cypress
 
 ## Features:
 
